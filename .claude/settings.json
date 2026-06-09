@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"D:\\\\pre-sales\\\\Ajam\\\\references\")",
+      "Bash(cmd /c dir /b /s \"D:\\\\pre-sales\\\\Ajam\")",
+      "Bash(npm -v)",
+      "Bash(ls assets/Fonts)",
+      "Bash(cd \"D:\\\\pre-sales\\\\Ajam\" && mkdir -p public/assets/Brand public/assets/Fonts assets/Fonts src/components/ui src/sections src/lib && cp assets/Brand/* public/assets/Brand/ && ls public/assets/Brand)",
+      "Bash(npm install *)",
+      "Bash(curl -fsSL --max-time 60 __TRACKED_VAR__/@fontsource/ibm-plex-sans-arabic@5.2.6/files/ibm-plex-sans-arabic-arabic-600-normal.woff2 -o ibmplex-600.woff2)",
+      "Bash(curl -fsSL --max-time 60 __TRACKED_VAR__/@fontsource/ibm-plex-sans-arabic@5.2.6/files/ibm-plex-sans-arabic-arabic-700-normal.woff2 -o ibmplex-700.woff2)",
+      "Bash(cp assets/Fonts/*.woff2 public/assets/Fonts/)",
+      "Bash(npm run *)",
+      "Bash(ls dist/assets/Fonts/)",
+      "Bash(ls dist/assets/Brand/)",
+      "Bash(cd \"D:\\\\pre-sales\\\\Ajam\" && rm -f shot-*.png && echo \"cleaned\")",
+      "WebFetch(domain:ajamksa.com)",
+      "Bash(rm -f v2-*.png v3-*.png v4-*.png v5-*.png v6-*.png ds-preview*.png shot-*.png)",
+      "Bash(ls *.png)",
+      "Bash(cd \"D:\\\\pre-sales\\\\Ajam\" && rm -f fix-*.png hdr-*.png && echo \"cleaned\")",
+      "Bash(ls public/assets/Images/)",
+      "Bash(ls public/assets/Images/amenities/)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Image]::FromFile\\(\"D:\\\\pre-sales\\\\Ajam\\\\tall.png\"\\); Write-Output \"H=$\\($src.Height\\)\"; $bandH=1200; for\\($y=2400;$y -lt $src.Height -and $y -lt 6400;$y+=$bandH\\){ $h=[Math]::Min\\($bandH,$src.Height-$y\\); $bmp=New-Object System.Drawing.Bitmap\\($src.Width,$h\\); $g=[System.Drawing.Graphics]::FromImage\\($bmp\\); $g.DrawImage\\($src,\\(New-Object System.Drawing.Rectangle\\(0,0,$src.Width,$h\\)\\),\\(New-Object System.Drawing.Rectangle\\(0,$y,$src.Width,$h\\)\\),[System.Drawing.GraphicsUnit]::Pixel\\); $bmp.Save\\(\"D:\\\\pre-sales\\\\Ajam\\\\band_$y.png\"\\); $g.Dispose\\(\\);$bmp.Dispose\\(\\); Write-Output \"band_$y.png\" }; $src.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Image]::FromFile\\(\"D:\\\\pre-sales\\\\Ajam\\\\tall.png\"\\); $bandH=520; foreach\\($y in 2900,3420,3940\\){ $h=[Math]::Min\\($bandH,$src.Height-$y\\); $bmp=New-Object System.Drawing.Bitmap\\($src.Width,$h\\); $g=[System.Drawing.Graphics]::FromImage\\($bmp\\); $g.DrawImage\\($src,\\(New-Object System.Drawing.Rectangle\\(0,0,$src.Width,$h\\)\\),\\(New-Object System.Drawing.Rectangle\\(0,$y,$src.Width,$h\\)\\),[System.Drawing.GraphicsUnit]::Pixel\\); $bmp.Save\\(\"D:\\\\pre-sales\\\\Ajam\\\\slice_$y.png\"\\); $g.Dispose\\(\\);$bmp.Dispose\\(\\); Write-Output \"slice_$y.png\" }; $src.Dispose\\(\\))",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $src=[System.Drawing.Image]::FromFile\\(\"D:\\\\pre-sales\\\\Ajam\\\\full.png\"\\); $bandH=620; $i=0; for\\($y=1900;$y -le 5400;$y+=$bandH\\){ $h=[Math]::Min\\($bandH,$src.Height-$y\\); if\\($h -le 0\\){break}; $bmp=New-Object System.Drawing.Bitmap\\($src.Width,$h\\); $g=[System.Drawing.Graphics]::FromImage\\($bmp\\); $g.DrawImage\\($src,\\(New-Object System.Drawing.Rectangle\\(0,0,$src.Width,$h\\)\\),\\(New-Object System.Drawing.Rectangle\\(0,$y,$src.Width,$h\\)\\),[System.Drawing.GraphicsUnit]::Pixel\\); $bmp.Save\\(\"D:\\\\pre-sales\\\\Ajam\\\\b$i`_$y.png\"\\); $g.Dispose\\(\\);$bmp.Dispose\\(\\); Write-Output \"b$i`_$y.png\"; $i++ }; $src.Dispose\\(\\))",
+      "Bash(node tmp_amen/fetch.mjs)",
+      "Bash(node tmp_amen/fetch2.mjs)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(rm -f src/components/project/AmenityScene.jsx)",
+      "Bash(mkdir -p assets/Images)",
+      "Bash(cp public/assets/Images/amenity-garden.jpg public/assets/Images/amenity-mosque.jpg public/assets/Images/amenity-parking.jpg public/assets/Images/amenity-kids.jpg public/assets/Images/amenity-security.jpg assets/Images/)"
+    ],
+    "additionalDirectories": [
+      "D:\\pre-sales\\Ajam\\assets\\Brand",
+      "D:\\pre-sales\\Ajam"
+    ]
+  }
+}
