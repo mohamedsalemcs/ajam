@@ -215,7 +215,7 @@ export function Home() {
 
       {/* ===== Live opportunities (urgency) ===== */}
       <section className="relative overflow-hidden bg-teal-900 py-20 text-white">
-        <img src="/assets/Images/skyline-night.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-20" />
+        <img src="/assets/Images/riyadh-skyline-night.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-20" />
         <Container className="relative">
           <SectionHeading tone="light" eyebrow="فرص متاحة الآن" title="وحدات جاهزة لاقتناص الفرصة" subtitle="مشاريع متاحة للبيع والتسليم الفوري — سجّل اهتمامك قبل نفاد الوحدات." />
           <div className="grid gap-4">
