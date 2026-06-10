@@ -116,7 +116,6 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="ajam-container flex flex-col items-center justify-between gap-3 py-5 text-caption text-stone-200/60 sm:flex-row">
           <span>© 2026 آجام. جميع الحقوق محفوظة.</span>
-          <span>نسخة عربية RTL — أصول محلية تعمل دون اتصال.</span>
         </div>
       </div>
     </footer>
