@@ -38,10 +38,10 @@ export function PageHeader({ eyebrow, title, subtitle, image, children, tall = f
   )
 }
 
-export function SectionHeading({ eyebrow, title, subtitle, align = 'start', tone = 'dark', className }) {
+export function SectionHeading({ eyebrow, title, subtitle, align = 'start', tone = 'dark', eyebrowClassName, className }) {
   return (
     <div className={cn('mb-12 max-w-2xl', align === 'center' && 'mx-auto text-center', className)}>
-      {eyebrow && <Eyebrow className={cn(align === 'center' && 'justify-center', tone === 'light' && 'text-gold-700')}>{eyebrow}</Eyebrow>}
+      {eyebrow && <Eyebrow className={cn(align === 'center' && 'justify-center', eyebrowClassName ?? (tone === 'light' && 'text-gold-700'))}>{eyebrow}</Eyebrow>}
       <Headline className={cn('mt-3', tone === 'light' && 'text-white')}>{title}</Headline>
       {subtitle && <Body className={cn('mt-3', tone === 'light' && 'text-stone-200/85')}>{subtitle}</Body>}
     </div>

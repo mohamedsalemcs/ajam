@@ -123,7 +123,7 @@ export function Home() {
       </section>
 
       {/* ===== STATS — each metric in its own card on a clean white surface ===== */}
-      <section className="bg-white py-12 sm:py-16">
+      <section className="bg-white pt-12 pb-6 sm:pt-16 sm:pb-8">
         <Container>
           <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {COMPANY_STATS.map((s, i) => (
@@ -141,7 +141,7 @@ export function Home() {
       </section>
 
       {/* ===== Pillars (الجودة/الابتكار/الاستدامة) ===== */}
-      <Section surface="white">
+      <Section surface="white" className="pt-6 sm:pt-8">
         <Container>
           <SectionHeading eyebrow="ما يميّزنا" title="ثلاث ركائز نبني عليها" align="center" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -163,7 +163,7 @@ export function Home() {
       </Section>
 
       {/* ===== Featured projects ===== */}
-      <Section surface="white">
+      <Section surface="white" style={{ backgroundColor: '#8b2f0e08' }}>
         <Container>
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading className="mb-0" eyebrow="مشاريعنا" title="مشاريع مختارة في الرياض" subtitle="نخبة من مشاريعنا المتاحة وتحت الإنشاء." />
@@ -183,50 +183,50 @@ export function Home() {
       </Section>
 
       {/* ===== Image-split: why a developer like Ajam ===== */}
-      <section className="bg-white">
-        <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[380px] overflow-hidden">
-            <img src="/assets/Images/interior-living.jpg" alt="تصاميم آجام الداخلية" className="size-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-l from-white/0 to-teal-900/10" />
-            <div className="absolute bottom-6 right-6 rounded-brand-lg bg-white/95 p-5 shadow-card-hover backdrop-blur">
+      <Section surface="white">
+        <Container className="grid items-center gap-12 lg:grid-cols-2">
+          {/* Image — smaller, in a rounded card */}
+          <Reveal className="relative">
+            <div className="overflow-hidden rounded-brand-lg shadow-card">
+              <img src="/assets/Images/why-ajam-villas.jpg" alt="مجمع فلل آجام السكني" className="aspect-[4/3] w-full object-cover" />
+            </div>
+            <div className="absolute -bottom-6 right-6 rounded-brand-lg border-t-2 border-t-gold-700 bg-white p-5 shadow-card-hover">
               <div className="font-display text-display-2 text-heritage-700">
                 <Counter value={100} suffix="٪" />
               </div>
               <Caption className="text-stone-600">التزام بمواعيد التسليم</Caption>
             </div>
-          </div>
-          <div className="flex items-center">
-            <Container className="py-16">
-              <Reveal>
-                <Eyebrow>لماذا آجام</Eyebrow>
-                <Headline className="mt-3">لا نبني وحدات فقط، بل نخلق بيئة حياة متكاملة</Headline>
-                <Body className="mt-4">
-                  من اختيار الموقع حتى آخر تفصيلة في التشطيب، نضع العميل في قلب كل قرار. نجمع بين
-                  جودة التنفيذ، والتصميم المبتكر، والاستدامة، لنقدّم عقاراً يحافظ على قيمته ويرتقي
-                  بأسلوب حياتك.
-                </Body>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {WHY_AJAM.map((w, i) => (
-                    <div key={w.title} className="flex items-start gap-3">
-                      <span className={cn('mt-0.5 grid size-9 shrink-0 place-items-center rounded-brand', rotate(SOFT_TILES, i))}>
-                        <Icon name={w.icon} size={18} />
-                      </span>
-                      <div>
-                        <Label className="block text-teal-900">{w.title}</Label>
-                        <Caption className="text-stone-600">{w.desc}</Caption>
-                      </div>
-                    </div>
-                  ))}
+          </Reveal>
+
+          {/* Content */}
+          <Reveal>
+            <Eyebrow>لماذا آجام</Eyebrow>
+            <Headline className="mt-3">لا نبني وحدات فقط، بل نخلق بيئة حياة متكاملة</Headline>
+            <Body className="mt-4">
+              من اختيار الموقع حتى آخر تفصيلة في التشطيب، نضع العميل في قلب كل قرار. نجمع بين
+              جودة التنفيذ، والتصميم المبتكر، والاستدامة، لنقدّم عقاراً يحافظ على قيمته ويرتقي
+              بأسلوب حياتك.
+            </Body>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {WHY_AJAM.map((w, i) => (
+                <div key={w.title} className="flex items-start gap-3">
+                  <span className={cn('mt-0.5 grid size-9 shrink-0 place-items-center rounded-brand', rotate(SOFT_TILES, i))}>
+                    <Icon name={w.icon} size={18} />
+                  </span>
+                  <div>
+                    <Label className="block text-teal-900">{w.title}</Label>
+                    <Caption className="text-stone-600">{w.desc}</Caption>
+                  </div>
                 </div>
-                <Button as={Link} to="/about" variant="tertiary" className="mt-6">
-                  تعرّف على آجام أكثر
-                  <Icon name="arrowLeft" size={16} />
-                </Button>
-              </Reveal>
-            </Container>
-          </div>
-        </div>
-      </section>
+              ))}
+            </div>
+            <Button as={Link} to="/about" variant="tertiary" className="mt-6">
+              تعرّف على آجام أكثر
+              <Icon name="arrowLeft" size={16} />
+            </Button>
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* ===== Live opportunities (urgency) ===== */}
       <section className="relative overflow-hidden bg-gradient-to-br from-mint-500 via-mint-700 to-mint-900 py-20 text-white">
@@ -234,38 +234,38 @@ export function Home() {
         <AjamMark className="pointer-events-none absolute -bottom-16 -left-12 h-80 w-auto text-white/[0.07]" />
         <div className="rule-gold absolute inset-x-0 top-0" aria-hidden />
         <Container className="relative">
-          <SectionHeading tone="light" eyebrow="فرص متاحة الآن" title="وحدات جاهزة لاقتناص الفرصة" subtitle="مشاريع متاحة للبيع والتسليم الفوري — سجّل اهتمامك قبل نفاد الوحدات." />
+          <SectionHeading tone="light" eyebrowClassName="text-gold-500" eyebrow="فرص متاحة الآن" title="وحدات جاهزة لاقتناص الفرصة" subtitle="مشاريع متاحة للبيع والتسليم الفوري — سجّل اهتمامك قبل نفاد الوحدات." />
           <div className="grid gap-4">
             {available.map((p, i) => {
               const soldPct = Math.round((p.unitsSold / p.unitsCount) * 100)
               return (
                 <Reveal key={p.slug} delay={i * 70}>
-                  <div className="group flex flex-col gap-5 rounded-brand-lg border border-white/10 bg-white/5 p-5 backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold-700/50 hover:bg-white/[0.09] hover:shadow-card-hover sm:flex-row sm:items-center">
+                  <div className="group flex flex-col gap-5 rounded-brand-lg border border-stone-200 bg-stone-100 p-5 shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold-700/60 hover:bg-white hover:shadow-card-hover sm:flex-row sm:items-center">
                     <div className="h-28 w-full shrink-0 overflow-hidden rounded-brand sm:w-44">
                       <img src={p.hero} alt={p.name} className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <Link to={`/projects/${p.slug}`} className="font-display text-headline-1 text-white hover:text-gold-700">
+                        <Link to={`/projects/${p.slug}`} className="font-display text-headline-1 text-teal-900 hover:text-heritage-700">
                           {p.name}
                         </Link>
                         {p.offer && <span className="rounded-full bg-gold-700 px-2.5 py-0.5 text-caption font-medium text-teal-900">{p.offer.badge}</span>}
                       </div>
-                      <div className="mt-1 text-body-2 text-stone-200/75">
+                      <div className="mt-1 text-body-2 text-stone-600">
                         {p.district} · يبدأ من {formatSAR(p.priceFrom)} ريال · {p.unitsAvailable} وحدة متاحة
                       </div>
                       <div className="mt-3 flex items-center gap-3">
-                        <div className="h-1.5 w-40 overflow-hidden rounded-full bg-white/15">
+                        <div className="h-1.5 w-40 overflow-hidden rounded-full bg-stone-200">
                           <div className="h-full rounded-full bg-gold-700" style={{ width: `${soldPct}%` }} />
                         </div>
-                        <Caption className="text-white/70">تم بيع {soldPct}٪</Caption>
+                        <Caption className="text-stone-500">تم بيع {soldPct}٪</Caption>
                       </div>
                     </div>
                     <div className="flex gap-2">
                       <Button as={Link} to={`/projects/${p.slug}`} variant="gold" size="sm">
                         التفاصيل
                       </Button>
-                      <Button as={Link} to={`/contact?project=${p.slug}&type=visit`} variant="outlineLight" size="sm">
+                      <Button as={Link} to={`/contact?project=${p.slug}&type=visit`} variant="secondary" size="sm">
                         احجز زيارة
                       </Button>
                     </div>
@@ -301,13 +301,13 @@ export function Home() {
       {/* ===== Investor — full-width premium band ===== */}
       <section className="surface-luxe-dark relative overflow-hidden text-white">
         {/* lightened property visual — details remain visible */}
-        <img src="/assets/Images/aerial-city.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-45" />
+        <img src="/assets/Images/why-ajam-villas.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-45" />
         {/* directional legibility: dark behind the copy (right), lighter over the visual (left) */}
         <div className="absolute inset-0 bg-gradient-to-l from-teal-900 via-teal-900/85 to-teal-900/45" />
         <div className="rule-gold absolute inset-x-0 top-0" aria-hidden />
         <Container className="relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2">
           <div>
-            <Eyebrow className="text-heritage-200">بوابة المستثمر</Eyebrow>
+            <Eyebrow className="text-gold-500">بوابة المستثمر</Eyebrow>
             <Headline className="mt-4 text-white">استثمر بثقة واحصل على عائد مدروس</Headline>
             <Body className="mt-4 max-w-xl text-stone-200/90">
               مشاريع بعوائد إيجارية تنافسية، مع حاسبة عائد تفاعلية ومستشار استثمار يرافقك خطوة بخطوة.
@@ -337,7 +337,7 @@ export function Home() {
       </section>
 
       {/* ===== Testimonials ===== */}
-      <Section surface="sand">
+      <Section surface="white">
         <Container>
           <SectionHeading eyebrow="آراء عملائنا" title="ثقة تبنى بالتجربة" align="center" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -358,7 +358,7 @@ export function Home() {
       </Section>
 
       {/* ===== Accreditations marquee ===== */}
-      <section className="border-y border-stone-200 bg-white py-8">
+      <section className="surface-luxe-sand border-y border-stone-200 py-8">
         <Container className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           <Caption className="text-stone-400">معتمدون وموثوقون لدى:</Caption>
           {AWARDS.map((a) => (
@@ -373,9 +373,10 @@ export function Home() {
       {/* ===== Final CTA — centered card, not full-bleed ===== */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
-          <div className="surface-luxe-mint relative mx-auto max-w-4xl overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 px-6 py-14 text-center text-white shadow-card-hover sm:px-10">
-            {/* Ajam arch motif — faint brand watermark anchoring the CTA */}
+          <div className="surface-luxe-mint relative overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 px-6 py-16 text-center text-white shadow-card-hover sm:px-12 sm:py-20">
+            {/* Ajam arch motif — faint brand watermarks (bottom-left + fainter top-right) */}
             <AjamMark className="pointer-events-none absolute -bottom-12 -left-8 h-60 w-auto text-white/[0.06]" />
+            <AjamMark className="pointer-events-none absolute -right-10 -top-12 h-52 w-auto text-white/[0.04]" />
             <div className="relative flex flex-col items-center gap-6">
               <Headline className="text-white">ابدأ رحلتك العقارية مع آجام</Headline>
               <Body className="max-w-xl text-white/85">
@@ -388,8 +389,8 @@ export function Home() {
                 <Button as="a" href={telHref()} variant="outlineLight" size="lg">
                   <Icon name="phone" size={18} /> اتصل بنا
                 </Button>
-                <Button as={Link} to="/projects" variant="outlineLight" size="lg">
-                  تصفّح المشاريع
+                <Button as="a" href="/assets/Brand/ajam-profile.pdf" download target="_blank" rel="noreferrer" variant="outlineLight" size="lg">
+                  <Icon name="download" size={18} /> تحميل البروفايل
                 </Button>
               </div>
             </div>

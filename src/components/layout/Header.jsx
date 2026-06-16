@@ -71,7 +71,7 @@ export function Header() {
               end={item.end}
               className={({ isActive }) =>
                 cn(
-                  'rounded-brand px-3.5 py-2 text-label font-medium transition-colors',
+                  'rounded-full px-3.5 py-2 text-label font-medium transition-colors',
                   solid
                     ? isActive
                       ? 'text-heritage-700 bg-heritage-100/60'
@@ -136,7 +136,7 @@ export function Header() {
                 end={item.end}
                 className={({ isActive }) =>
                   cn(
-                    'rounded-brand px-3 py-3 text-body-2 font-medium',
+                    'rounded-full px-4 py-3 text-body-2 font-medium',
                     isActive ? 'text-heritage-700 bg-heritage-100/60' : 'text-ink-700',
                   )
                 }
