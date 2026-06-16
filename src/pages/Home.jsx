@@ -373,7 +373,7 @@ export function Home() {
       {/* ===== Final CTA — centered card, not full-bleed ===== */}
       <section className="bg-white py-16 sm:py-20">
         <Container>
-          <div className="surface-luxe-mint relative overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 px-6 py-16 text-center text-white shadow-card-hover sm:px-12 sm:py-20">
+          <div className="surface-luxe-heritage relative overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 px-6 py-16 text-center text-white shadow-card-hover sm:px-12 sm:py-20">
             {/* Ajam arch motif — faint brand watermarks (bottom-left + fainter top-right) */}
             <AjamMark className="pointer-events-none absolute -bottom-12 -left-8 h-60 w-auto text-white/[0.06]" />
             <AjamMark className="pointer-events-none absolute -right-10 -top-12 h-52 w-auto text-white/[0.04]" />
