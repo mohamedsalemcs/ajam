@@ -8,6 +8,8 @@ import { PageHeader, SectionHeading } from '../components/common/Bits'
 import { Reveal } from '../components/motion/Reveal'
 import { PROJECTS, formatSAR } from '../data/projects'
 import { whatsappHref } from '../lib/links'
+import { SOFT_TILES, rotate } from '../lib/accents'
+import { cn } from '../lib/cn'
 
 const INVESTABLE = PROJECTS.filter((p) => p.investor)
 
@@ -76,8 +78,8 @@ export function Investor() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_INVEST.map((w, i) => (
               <Reveal key={w.t} delay={i * 80}>
-                <Card className="h-full p-6">
-                  <span className="grid size-11 place-items-center rounded-brand bg-gold-100 text-gold-900"><Icon name={w.icon} size={22} /></span>
+                <Card accent interactive className="h-full p-6">
+                  <span className={cn('grid size-11 place-items-center rounded-brand', rotate(SOFT_TILES, i))}><Icon name={w.icon} size={22} /></span>
                   <Headline level={2} as="h3" className="mt-4">{w.t}</Headline>
                   <Body size={2} className="mt-2">{w.d}</Body>
                 </Card>
@@ -88,7 +90,7 @@ export function Investor() {
       </Section>
 
       {/* Calculator */}
-      <Section surface="sand" id="calculator">
+      <Section surface="white" id="calculator">
         <Container>
           <SectionHeading eyebrow="حاسبة العائد" title="احسب عائدك الاستثماري المتوقع" subtitle="أدخل بيانات الوحدة لتقدير العائد السنوي وفترة الاسترداد. النتائج تقديرية لأغراض التوضيح." />
           <div className="grid gap-6 lg:grid-cols-12">
@@ -151,7 +153,7 @@ export function Investor() {
           <div className="grid gap-4">
             {INVESTABLE.map((p, i) => (
               <Reveal key={p.slug} delay={i * 70}>
-                <div className="flex flex-col gap-5 rounded-brand-lg border border-stone-200 bg-white p-4 shadow-card sm:flex-row sm:items-center">
+                <div className="flex flex-col gap-5 rounded-brand-lg border border-stone-200 bg-white p-4 shadow-card transition-all hover:border-gold-200 hover:shadow-card-hover sm:flex-row sm:items-center">
                   <img src={p.hero} alt={p.name} className="h-24 w-full rounded-brand object-cover sm:w-40" />
                   <div className="flex-1">
                     <Link to={`/projects/${p.slug}`} className="font-display text-headline-1 text-teal-900 hover:text-heritage-700">{p.name}</Link>

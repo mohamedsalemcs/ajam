@@ -80,7 +80,7 @@
   }
 
   body {
-    @apply bg-stone-100 text-ink-900 font-body antialiased;
+    @apply bg-white text-ink-900 font-body antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -91,7 +91,7 @@
 
   /* RTL-aware focus ring for accessibility */
   :focus-visible {
-    @apply outline-none ring-2 ring-mint-500 ring-offset-2 ring-offset-stone-100;
+    @apply outline-none ring-2 ring-mint-500 ring-offset-2 ring-offset-white;
   }
 
   ::selection {
@@ -103,6 +103,62 @@
   /* Reusable content container — centered, RTL-safe horizontal padding */
   .ajam-container {
     @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  /* Gold hairline — the brand's signature luxury divider. */
+  .rule-gold {
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(90deg, transparent, rgba(212, 174, 106, 0.85), transparent);
+  }
+  .rule-gold-soft {
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(90deg, transparent, rgba(212, 174, 106, 0.45), transparent);
+  }
+}
+
+@layer utilities {
+  /* ---- Premium surfaces — depth instead of flat single-colour fills ---- */
+
+  /* Dark premium surface: teal depth + a restrained warm gold glow + sand motif. */
+  .surface-luxe-dark {
+    background-color: #062C33;
+    background-image:
+      radial-gradient(115% 95% at 100% 0%, rgba(212, 174, 106, 0.12), transparent 55%),
+      radial-gradient(95% 85% at 0% 100%, rgba(11, 74, 84, 0.6), transparent 60%);
+  }
+
+  /* Dark heritage surface — for the brand-identity CTA band. */
+  .surface-luxe-heritage {
+    background-color: #8B2F0E;
+    background-image:
+      radial-gradient(115% 95% at 100% 0%, rgba(212, 174, 106, 0.16), transparent 55%),
+      radial-gradient(95% 90% at 0% 100%, rgba(95, 32, 11, 0.7), transparent 60%);
+  }
+
+  /* Mint-green surface — the brand tertiary (renewal / growth). */
+  .surface-luxe-mint {
+    background-color: #0E6E63;
+    background-image:
+      radial-gradient(115% 95% at 100% 0%, rgba(212, 174, 106, 0.14), transparent 55%),
+      radial-gradient(95% 90% at 0% 100%, rgba(8, 70, 63, 0.72), transparent 60%);
+  }
+
+  /* Warm light surface — sand with a faint gold wash for an unflat backdrop. */
+  .surface-luxe-sand {
+    background-color: #F4EFE8;
+    background-image:
+      radial-gradient(120% 120% at 100% 0%, rgba(212, 174, 106, 0.12), transparent 55%),
+      radial-gradient(110% 110% at 0% 100%, rgba(220, 234, 237, 0.45), transparent 60%);
+  }
+
+  /* Subtle architectural motif overlay (design system §11) — faint geometric lines. */
+  .motif-grid {
+    background-image:
+      linear-gradient(rgba(212, 174, 106, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 174, 106, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 }
 

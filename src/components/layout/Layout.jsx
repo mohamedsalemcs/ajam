@@ -22,7 +22,7 @@ function ScrollToTop() {
 
 export function Layout() {
   return (
-    <div className="flex min-h-screen flex-col bg-stone-100">
+    <div className="flex min-h-screen flex-col bg-white">
       <ScrollToTop />
       <Header />
       <main className="flex-1">

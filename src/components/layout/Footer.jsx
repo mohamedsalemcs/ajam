@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '../ui/Logo'
 import { Icon } from '../ui/Icon'
-import { Button } from '../ui/Button'
-import { CONTACT, BRAND } from '../../data/projects'
-import { telHref, whatsappHref, mailHref } from '../../lib/links'
+import { AjamMark } from '../ui/Motif'
+import { CONTACT } from '../../data/projects'
+import { telHref, mailHref } from '../../lib/links'
 
 const QUICK = [
   { to: '/', label: 'الرئيسية' },
@@ -20,26 +20,13 @@ const SUPPORT = [
 
 export function Footer() {
   return (
-    <footer className="bg-teal-900 text-stone-200">
-      {/* CTA strip */}
-      <div className="border-b border-white/10">
-        <div className="ajam-container flex flex-col items-center justify-between gap-5 py-10 text-center sm:flex-row sm:text-right">
-          <div>
-            <h3 className="font-display text-headline-1 text-white">ابدأ رحلتك العقارية مع آجام</h3>
-            <p className="mt-1 text-body-2 text-stone-200/75">{BRAND.tagline}</p>
-          </div>
-          <div className="flex gap-3">
-            <Button as="a" href={whatsappHref('مرحباً، أرغب بالتواصل مع آجام')} target="_blank" rel="noreferrer" variant="gold" size="lg">
-              <Icon name="whatsapp" size={18} /> تواصل عبر واتساب
-            </Button>
-            <Button as={Link} to="/projects" variant="outlineLight" size="lg">
-              تصفّح المشاريع
-            </Button>
-          </div>
-        </div>
-      </div>
+    <footer className="surface-luxe-dark relative overflow-hidden text-stone-200">
+      {/* Gold hairline crowning the footer — luxury transition from page */}
+      <div className="rule-gold" aria-hidden />
+      {/* Ajam arch motif — faint brand watermark */}
+      <AjamMark className="pointer-events-none absolute -bottom-16 left-[6%] h-72 w-auto text-white/[0.035]" />
 
-      <div className="ajam-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="relative ajam-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo variant="secondary" size="md" />
           <p className="mt-4 text-body-2 leading-relaxed text-stone-200/80">
@@ -47,18 +34,19 @@ export function Footer() {
           </p>
           <div className="mt-5 flex gap-2">
             {[
-              { label: 'X', href: CONTACT.twitter },
-              { label: 'IG', href: CONTACT.instagram },
-              { label: 'WA', href: whatsappHref() },
+              { name: 'x', label: 'X', href: CONTACT.twitter },
+              { name: 'linkedin', label: 'LinkedIn', href: CONTACT.linkedin },
+              { name: 'tiktok', label: 'TikTok', href: CONTACT.tiktok },
             ].map((s) => (
               <a
-                key={s.label}
+                key={s.name}
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="grid size-9 place-items-center rounded-brand border border-white/15 text-caption text-stone-200/80 transition-colors hover:border-gold-700 hover:text-gold-700"
+                aria-label={s.label}
+                className="grid size-9 place-items-center rounded-brand border border-white/15 text-stone-200/80 transition-colors hover:border-gold-700 hover:text-gold-700"
               >
-                {s.label}
+                <Icon name={s.name} size={17} fill />
               </a>
             ))}
           </div>
@@ -94,26 +82,26 @@ export function Footer() {
           <h4 className="font-display text-headline-2 text-white">تواصل معنا</h4>
           <ul className="mt-4 space-y-3 text-body-2 text-stone-200/80">
             <li>
-              <a href={telHref()} className="flex items-center gap-2 hover:text-gold-700">
-                <Icon name="phone" size={18} /> <span dir="ltr">{CONTACT.phoneDisplay}</span>
+              <a href={telHref()} className="flex items-center gap-2 transition-colors hover:text-gold-700">
+                <Icon name="phone" size={18} className="text-gold-700" /> <span dir="ltr">{CONTACT.phoneDisplay}</span>
               </a>
             </li>
             <li>
-              <a href={mailHref()} className="flex items-center gap-2 hover:text-gold-700">
-                <Icon name="mail" size={18} /> {CONTACT.email}
+              <a href={mailHref()} className="flex items-center gap-2 transition-colors hover:text-gold-700">
+                <Icon name="mail" size={18} className="text-mint-200" /> {CONTACT.email}
               </a>
             </li>
             <li className="flex items-start gap-2">
-              <Icon name="pin" size={18} className="mt-0.5" /> {CONTACT.address}
+              <Icon name="pin" size={18} className="mt-0.5 text-gold-700" /> {CONTACT.address}
             </li>
             <li className="flex items-center gap-2">
-              <Icon name="clock" size={18} /> {CONTACT.hours}
+              <Icon name="clock" size={18} className="text-gold-700" /> {CONTACT.hours}
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="relative border-t border-white/10">
         <div className="ajam-container flex flex-col items-center justify-between gap-3 py-5 text-caption text-stone-200/60 sm:flex-row">
           <span>© 2026 آجام. جميع الحقوق محفوظة.</span>
         </div>

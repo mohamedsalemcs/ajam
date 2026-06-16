@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Count-up number, triggered when scrolled into view. Arabic-Indic digits.
+// Count-up number, triggered when scrolled into view. Latin (English) digits.
 export function Counter({ value, suffix = '', duration = 1600, className }) {
   const ref = useRef(null)
   const [n, setN] = useState(0)
@@ -27,7 +27,7 @@ export function Counter({ value, suffix = '', duration = 1600, className }) {
     return () => io.disconnect()
   }, [value, duration])
 
-  const formatted = new Intl.NumberFormat('ar-SA').format(n)
+  const formatted = new Intl.NumberFormat('en-US').format(n)
   return (
     <span ref={ref} className={className}>
       {formatted}

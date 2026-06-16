@@ -3,6 +3,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom'
 import { Logo } from '../ui/Logo'
 import { Button } from '../ui/Button'
 import { Icon } from '../ui/Icon'
+import { LanguageSwitcher } from './LanguageSwitcher'
 import { cn } from '../../lib/cn'
 import { whatsappHref, telHref } from '../../lib/links'
 
@@ -37,7 +38,7 @@ export function Header() {
       className={cn(
         'fixed inset-x-0 top-0 z-40 transition-all duration-300',
         solid
-          ? 'border-b border-stone-200 bg-stone-100/95 backdrop-blur-md shadow-sm'
+          ? 'border-b border-stone-200 bg-white/95 backdrop-blur-md shadow-sm'
           : 'border-b border-transparent bg-transparent',
       )}
     >
@@ -46,6 +47,14 @@ export function Header() {
         className={cn(
           'pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-teal-900/75 via-teal-900/35 to-transparent transition-opacity duration-300',
           solid ? 'opacity-0' : 'opacity-100',
+        )}
+        aria-hidden
+      />
+      {/* Gold hairline accent at the base of the solid bar — luxury edge */}
+      <div
+        className={cn(
+          'rule-gold pointer-events-none absolute inset-x-0 bottom-0 transition-opacity duration-300',
+          solid ? 'opacity-100' : 'opacity-0',
         )}
         aria-hidden
       />
@@ -79,6 +88,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher solid={solid} />
           <a
             href={telHref()}
             className={cn(
@@ -87,7 +97,7 @@ export function Header() {
             )}
           >
             <Icon name="phone" size={17} />
-            <span dir="ltr">٠٥٣ ٥٠٠ ٤٥٤٠</span>
+            <span dir="ltr">053 500 4540</span>
           </a>
           <Button
             as="a"
@@ -117,7 +127,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-stone-200 bg-stone-100 lg:hidden">
+        <nav className="border-t border-stone-200 bg-white lg:hidden">
           <div className="ajam-container flex flex-col py-3">
             {NAV.map((item) => (
               <NavLink

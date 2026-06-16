@@ -1,0 +1,21 @@
+import { cn } from '../../lib/cn'
+
+// The Ajam brand mark — the logo's nested-arch ("gate") motif, taken verbatim
+// from the official app icon (design system §11). Rendered in currentColor so it
+// can be tinted and faded. Use ONLY as a subtle decorative watermark on premium
+// dark bands, trust blocks, CTAs and download cards — never loud, never content.
+export function AjamMark({ className, ...props }) {
+  return (
+    <svg
+      viewBox="0 0 220 220"
+      fill="currentColor"
+      aria-hidden
+      className={cn('shrink-0', className)}
+      {...props}
+    >
+      <path d="M91.7334 1.40382C56.0001 8.20382 24.4001 30.8705 10.0001 60.0705C-0.133246 80.3372 8.76616e-05 79.5372 8.76616e-05 153.67V219.404H15.3334H30.6668V148.204V77.0038L53.6001 54.8705L76.6668 32.7372H110.533H144.267L161.2 49.0038C170.4 57.8038 180.533 68.0705 183.733 71.6705L189.333 78.3372V148.87V219.404H204.667H220V155.67C220 88.3371 219.467 82.3372 213.467 68.3372C209.067 58.0705 201.6 47.6705 190 35.5372C173.6 18.4705 156.667 7.67049 138.4 2.60382C127.867 -0.329512 104 -0.862845 91.7334 1.40382Z" />
+      <path d="M66.1334 64.3371L49.3334 81.4038V134.337V187.404H64H78.6667V134.337C78.6667 94.8705 79.0667 80.8705 80.2667 79.6705C81.4667 78.4705 89.8667 78.0705 109.733 78.0705C134.8 78.0705 137.867 78.3371 139.467 80.3371C140.933 82.2038 141.2 93.6705 141.333 135.004V187.404H156.667H172V134.337V81.4038L154.133 64.3371L136.267 47.4038H109.6H82.9334L66.1334 64.3371Z" />
+      <path d="M95.6001 95.004C95.0667 95.404 94.6667 102.337 94.6667 110.337V124.737H110H125.333V109.404V94.0706H110.933C102.933 94.0706 96.0001 94.4706 95.6001 95.004Z" />
+    </svg>
+  )
+}

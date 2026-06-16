@@ -11,7 +11,7 @@ export function ProjectCard({ project }) {
   return (
     <Link
       to={`/projects/${project.slug}`}
-      className="group relative block overflow-hidden rounded-brand-lg bg-teal-900 shadow-card transition-all duration-300 hover:shadow-card-hover"
+      className="group relative block overflow-hidden rounded-brand-lg bg-teal-900 shadow-card ring-1 ring-transparent transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover hover:ring-gold-700/40"
     >
       {/* Image */}
       <div className="relative aspect-[4/5] overflow-hidden">

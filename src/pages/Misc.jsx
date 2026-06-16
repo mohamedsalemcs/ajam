@@ -5,11 +5,11 @@ import { Container } from '../components/ui/Container'
 
 export function NotFound() {
   return (
-    <section className="relative min-h-[70svh] overflow-hidden bg-teal-900 pt-[68px] text-white">
+    <section className="surface-luxe-dark relative min-h-[70svh] overflow-hidden pt-[68px] text-white">
       <img src="/assets/Images/skyline-night.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-25" />
       <Container className="relative grid min-h-[60svh] place-items-center text-center">
         <div>
-          <span className="font-display text-display-1 text-gold-700">٤٠٤</span>
+          <span className="font-display text-display-1 text-gold-700">404</span>
           <Headline className="mt-2 text-white">الصفحة غير موجودة</Headline>
           <Body className="mx-auto mt-2 max-w-md text-stone-200/85">عذراً، الصفحة التي تبحث عنها غير متوفّرة أو تم نقلها.</Body>
           <div className="mt-6 flex justify-center gap-3">

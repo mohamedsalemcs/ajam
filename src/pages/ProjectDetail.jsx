@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Button, Icon } from '../components/ui'
+import { Button, Icon, AjamMark } from '../components/ui'
 import { Headline, Body, Eyebrow, Caption, Label, Display } from '../components/ui/Typography'
 import { Section, Container } from '../components/ui/Container'
 import { Card } from '../components/ui/Card'
@@ -14,6 +14,7 @@ import { Reveal } from '../components/motion/Reveal'
 import { getProject, similarProjects, formatSAR, STATUS_META } from '../data/projects'
 import { whatsappHref, telHref } from '../lib/links'
 import { cn } from '../lib/cn'
+import { SOFT_TILES, rotate } from '../lib/accents'
 
 const UNIT_STATUS = {
   available: { label: 'متاحة', cls: 'text-mint-700 bg-mint-100' },
@@ -23,7 +24,7 @@ const UNIT_STATUS = {
 
 function NotFound() {
   return (
-    <div className="bg-teal-900 pt-[68px]">
+    <div className="surface-luxe-dark pt-[68px]">
       <Container className="grid place-items-center py-32 text-center text-white">
         <Icon name="building" size={48} className="text-gold-700" />
         <Headline className="mt-4 text-white">المشروع غير موجود</Headline>
@@ -33,10 +34,10 @@ function NotFound() {
   )
 }
 
-function Fact({ icon, label, value }) {
+function Fact({ icon, label, value, tile }) {
   return (
-    <div className="flex items-center gap-3 rounded-brand border border-stone-200 bg-white p-4">
-      <span className="grid size-10 shrink-0 place-items-center rounded-brand bg-teal-100 text-teal-700">
+    <div className="flex items-center gap-3 rounded-brand border border-stone-200 bg-white p-4 transition-colors hover:border-gold-200">
+      <span className={cn('grid size-10 shrink-0 place-items-center rounded-brand', tile)}>
         <Icon name={icon} size={20} />
       </span>
       <div className="min-w-0">
@@ -99,7 +100,7 @@ export function ProjectDetail() {
 
       {/* ===== Sticky action bar — anchored at top-0; slides to just under the
            header (68px) when shown, fully off-screen when hidden (no sliver) ===== */}
-      <div className={cn('fixed inset-x-0 top-0 z-30 border-b border-stone-200 bg-stone-100/95 backdrop-blur-md transition-transform duration-300', showBar ? 'translate-y-[68px]' : '-translate-y-full pointer-events-none')}>
+      <div className={cn('fixed inset-x-0 top-0 z-30 border-b border-stone-200 bg-white/95 backdrop-blur-md transition-transform duration-300', showBar ? 'translate-y-[68px]' : '-translate-y-full pointer-events-none')}>
         <Container className="flex items-center justify-between gap-4 py-3">
           <div className="min-w-0">
             <div className="truncate font-display text-headline-2 text-teal-900">{project.name}</div>
@@ -121,12 +122,16 @@ export function ProjectDetail() {
       <section className="border-b border-stone-200 bg-white py-8">
         <Container>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
-            <Fact icon="doc" label="تبدأ الأسعار من" value={`${formatSAR(project.priceFrom)} ريال`} />
-            <Fact icon="ruler" label="المساحات" value={`${project.areaMin}–${project.areaMax} م²`} />
-            <Fact icon="bed" label="غرف النوم" value={project.bedroomsRange} />
-            <Fact icon="building" label="إجمالي الوحدات" value={`${project.unitsCount} وحدة`} />
-            <Fact icon="checkCircle" label="متاح الآن" value={project.status === 'completed' ? 'مباع بالكامل' : `${project.unitsAvailable} وحدة`} />
-            <Fact icon="calendar" label="التسليم" value={project.deliveryDate} />
+            {[
+              { icon: 'doc', label: 'تبدأ الأسعار من', value: `${formatSAR(project.priceFrom)} ريال` },
+              { icon: 'ruler', label: 'المساحات', value: `${project.areaMin}–${project.areaMax} م²` },
+              { icon: 'bed', label: 'غرف النوم', value: project.bedroomsRange },
+              { icon: 'building', label: 'إجمالي الوحدات', value: `${project.unitsCount} وحدة` },
+              { icon: 'checkCircle', label: 'متاح الآن', value: project.status === 'completed' ? 'مباع بالكامل' : `${project.unitsAvailable} وحدة` },
+              { icon: 'calendar', label: 'التسليم', value: project.deliveryDate },
+            ].map((f, i) => (
+              <Fact key={f.label} icon={f.icon} label={f.label} value={f.value} tile={rotate(SOFT_TILES, i)} />
+            ))}
           </div>
         </Container>
       </section>
@@ -208,7 +213,7 @@ export function ProjectDetail() {
       </Section>
 
       {/* ===== Units availability ===== */}
-      <Section surface="sand">
+      <Section surface="white">
         <Container>
           <SectionHeading eyebrow="الوحدات" title="المساحات والأسعار والتوفّر" subtitle="جدول شفّاف بحالة كل وحدة — متاحة، محجوزة، أو مباعة." />
           <div className="overflow-hidden rounded-brand-lg border border-stone-200 bg-white">
@@ -320,8 +325,9 @@ export function ProjectDetail() {
       </Section>
 
       {/* ===== Brochure (in-project only) ===== */}
-      <section id="brochure" className="scroll-mt-24 bg-teal-900 py-16 text-white">
-        <Container>
+      <section id="brochure" className="surface-luxe-dark relative scroll-mt-24 overflow-hidden py-16 text-white">
+        <AjamMark className="pointer-events-none absolute -bottom-10 -left-6 h-56 w-auto text-white/[0.05]" />
+        <Container className="relative">
           <div className="flex flex-col items-center justify-between gap-6 rounded-brand-lg border border-white/10 bg-white/5 p-8 backdrop-blur sm:flex-row sm:text-right">
             <div className="flex items-center gap-5">
               <span className="grid size-16 shrink-0 place-items-center rounded-brand bg-gold-700 text-teal-900"><Icon name="doc" size={32} /></span>

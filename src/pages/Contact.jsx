@@ -51,7 +51,7 @@ export function Contact() {
         image="/assets/Images/lifestyle-living.jpg"
       />
 
-      <Section surface="light">
+      <Section surface="white">
         <Container className="grid gap-8 lg:grid-cols-12">
           {/* Direct channels */}
           <div className="lg:col-span-4">
@@ -98,7 +98,7 @@ export function Contact() {
 
           {/* Form */}
           <div className="lg:col-span-8">
-            <Card className="p-6 sm:p-8">
+            <Card accent className="p-6 sm:p-8">
               {sent ? (
                 <div className="grid place-items-center py-12 text-center">
                   <span className="grid size-16 place-items-center rounded-full bg-mint-100 text-mint-700">

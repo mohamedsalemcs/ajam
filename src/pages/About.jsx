@@ -10,6 +10,8 @@ import { Counter } from '../components/motion/Counter'
 import { COMPANY_STATS, PROJECTS, BRAND } from '../data/projects'
 import { TIMELINE, AWARDS, PARTNERS } from '../data/content'
 import { whatsappHref } from '../lib/links'
+import { SOFT_TILES, ACCENT_TEXT, rotate } from '../lib/accents'
+import { cn } from '../lib/cn'
 
 export function About() {
   const completed = PROJECTS.filter((p) => p.status === 'completed')
@@ -22,6 +24,7 @@ export function About() {
         title="نبني الثقة قبل أن نبني المساحات"
         subtitle={BRAND.tagline}
         image="/assets/Images/tower-facade.jpg"
+        tone="heritage"
         tall
       />
 
@@ -41,9 +44,9 @@ export function About() {
               وجودة الحياة والقيمة الاستثمارية على المدى الطويل.
             </Body>
             <div className="mt-7 grid grid-cols-3 gap-4">
-              {COMPANY_STATS.slice(0, 3).map((s) => (
-                <div key={s.label}>
-                  <div className="font-display text-headline-1 text-heritage-700">
+              {COMPANY_STATS.slice(0, 3).map((s, i) => (
+                <div key={s.label} className="border-t-2 border-stone-200 pt-3">
+                  <div className={cn('font-display text-headline-1', rotate(ACCENT_TEXT, i))}>
                     <Counter value={s.value} suffix={s.suffix} />
                   </div>
                   <Caption className="text-stone-600">{s.label}</Caption>
@@ -55,7 +58,7 @@ export function About() {
             <div className="overflow-hidden rounded-brand-lg">
               <img src="/assets/Images/handshake.jpg" alt="فريق آجام" className="aspect-[4/3] w-full object-cover" />
             </div>
-            <div className="absolute -bottom-6 right-6 hidden rounded-brand-lg bg-teal-900 p-5 text-white shadow-card-hover sm:block">
+            <div className="surface-luxe-dark absolute -bottom-6 right-6 hidden rounded-brand-lg border-t-2 border-t-gold-700 p-5 text-white shadow-card-hover sm:block">
               <div className="font-display text-display-2 text-gold-700"><Counter value={161} suffix="+" /></div>
               <Caption className="text-stone-200/80">وحدة سكنية مسلّمة</Caption>
             </div>
@@ -64,14 +67,15 @@ export function About() {
       </Section>
 
       {/* Pillars */}
-      <Section surface="sand">
+      <Section surface="white">
         <Container>
           <SectionHeading eyebrow="ما يميّزنا" title="ثلاث ركائز نبني عليها" align="center" />
           <div className="grid gap-6 md:grid-cols-3">
             {BRAND.pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 100}>
-                <Card className="h-full p-8 text-center">
-                  <span className="mx-auto grid size-14 place-items-center rounded-full bg-heritage-100 text-heritage-700">
+                <Card accent interactive className="h-full p-8 text-center">
+                  {/* offset by 1 → teal · gold · mint, so the tertiary (mint) gets stage time */}
+                  <span className={cn('mx-auto grid size-14 place-items-center rounded-full', rotate(SOFT_TILES, i + 1))}>
                     <Icon name={p.icon} size={26} />
                   </span>
                   <Headline level={1} as="h3" className="mt-5">{p.title}</Headline>
@@ -93,7 +97,7 @@ export function About() {
               {TIMELINE.map((t, i) => (
                 <Reveal key={t.year} delay={i * 80}>
                   <div className={`relative flex gap-6 lg:w-1/2 ${i % 2 ? 'lg:mr-auto lg:flex-row-reverse lg:pr-10 lg:text-left' : 'lg:ml-auto lg:pl-10'}`}>
-                    <span className="absolute right-0 top-1.5 z-10 size-4 rounded-full border-2 border-white bg-heritage-700 lg:right-auto" style={{}} />
+                    <span className={cn('absolute right-0 top-1.5 z-10 size-4 rounded-full border-2 border-white shadow-sm lg:right-auto', ['bg-heritage-700', 'bg-teal-700', 'bg-gold-700', 'bg-mint-700'][i % 4])} />
                     <div className="pr-8 lg:pr-0">
                       <div className="font-display text-headline-1 text-gold-700">{t.year}</div>
                       <Label className="mt-1 block text-teal-900">{t.title}</Label>
@@ -114,9 +118,9 @@ export function About() {
             <Eyebrow>الاعتمادات</Eyebrow>
             <Headline className="mt-3">موثوقون ومعتمدون</Headline>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-              {AWARDS.map((a) => (
-                <li key={a} className="flex items-center gap-3 rounded-brand bg-white p-4 shadow-card">
-                  <Icon name="shield" size={22} className="text-mint-700" />
+              {AWARDS.map((a, i) => (
+                <li key={a} className="flex items-center gap-3 rounded-brand border border-stone-200 bg-white p-4 shadow-card transition-colors hover:border-gold-200">
+                  <Icon name="shield" size={22} className={rotate(ACCENT_TEXT, i)} />
                   <Label className="text-teal-900">{a}</Label>
                 </li>
               ))}
@@ -127,7 +131,7 @@ export function About() {
             <Headline className="mt-3">نعمل مع الأفضل</Headline>
             <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3">
               {PARTNERS.map((p) => (
-                <div key={p} className="grid h-20 place-items-center rounded-brand border border-stone-200 bg-white text-center">
+                <div key={p} className="grid h-20 place-items-center rounded-brand border border-stone-200 bg-white text-center transition-all hover:border-gold-200 hover:shadow-card">
                   <span className="text-label text-stone-600">{p}</span>
                 </div>
               ))}
@@ -150,7 +154,8 @@ export function About() {
       </Section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-teal-900 py-16 text-white">
+      <section className="surface-luxe-dark relative overflow-hidden py-16 text-white">
+        <div className="rule-gold absolute inset-x-0 top-0" aria-hidden />
         <img src="/assets/Images/skyline-dusk.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-20" />
         <Container className="relative flex flex-col items-center gap-6 text-center">
           <Headline className="text-white">لنبنِ مستقبلك العقاري معاً</Headline>

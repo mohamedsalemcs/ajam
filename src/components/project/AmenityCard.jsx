@@ -18,7 +18,7 @@ const FALLBACK = '/assets/Images/interior-living.jpg'
 
 export function AmenityCard({ icon, label }) {
   return (
-    <div className="group relative aspect-[4/5] overflow-hidden rounded-brand-lg border border-stone-200 shadow-card">
+    <div className="group relative aspect-[4/5] overflow-hidden rounded-brand-lg border border-stone-200 shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-card-hover">
       <img
         src={PHOTO[icon] || FALLBACK}
         alt={label}

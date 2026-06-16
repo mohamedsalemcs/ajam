@@ -37,7 +37,7 @@ export const STATUS_META = {
 export const PROJECTS = [
   {
     slug: 'ajam-12-yarmouk',
-    name: 'آجام ١٢',
+    name: 'آجام 12',
     number: '12',
     city: 'الرياض',
     district: 'حي اليرموك',
@@ -93,10 +93,10 @@ export const PROJECTS = [
     ],
     offer: { badge: 'عرض محدود', title: 'خصم حصري عند الحجز هذا الشهر', desc: 'تشطيبات مطوّرة مجاناً + إعفاء من رسوم الإدارة لسنة.' },
     nearby: [
-      { name: 'مدارس عالمية', distance: '٥ دقائق' },
-      { name: 'مركز تجاري', distance: '٧ دقائق' },
-      { name: 'مستشفى', distance: '١٠ دقائق' },
-      { name: 'الطريق الدائري', distance: '٤ دقائق' },
+      { name: 'مدارس عالمية', distance: '5 دقائق' },
+      { name: 'مركز تجاري', distance: '7 دقائق' },
+      { name: 'مستشفى', distance: '10 دقائق' },
+      { name: 'الطريق الدائري', distance: '4 دقائق' },
     ],
     floorPlans: 4,
     brochureSize: 'PDF · 8.4 MB',
@@ -104,7 +104,7 @@ export const PROJECTS = [
   },
   {
     slug: 'ajam-13-muruj',
-    name: 'آجام ١٣',
+    name: 'آجام 13',
     number: '13',
     city: 'الرياض',
     district: 'حي المروج',
@@ -159,9 +159,9 @@ export const PROJECTS = [
     ],
     offer: { badge: 'فرصة نادرة', title: 'بقي عدد محدود من الوحدات', desc: 'سجّل اهتمامك الآن قبل نفاد الوحدات المتاحة.' },
     nearby: [
-      { name: 'مدارس متميزة', distance: '٦ دقائق' },
-      { name: 'وجهات ترفيهية', distance: '٨ دقائق' },
-      { name: 'مركز أعمال', distance: '١٢ دقيقة' },
+      { name: 'مدارس متميزة', distance: '6 دقائق' },
+      { name: 'وجهات ترفيهية', distance: '8 دقائق' },
+      { name: 'مركز أعمال', distance: '12 دقيقة' },
     ],
     floorPlans: 3,
     brochureSize: 'PDF · 6.9 MB',
@@ -169,7 +169,7 @@ export const PROJECTS = [
   },
   {
     slug: 'ajam-14-malqa',
-    name: 'آجام ١٤',
+    name: 'آجام 14',
     number: '14',
     city: 'الرياض',
     district: 'حي الملقا',
@@ -224,9 +224,9 @@ export const PROJECTS = [
     ],
     offer: { badge: 'حجز مبكر', title: 'أسعار ما قبل التسليم', desc: 'احجز الآن واستفد من أفضل الأسعار وأفضل اختيار للوحدات.' },
     nearby: [
-      { name: 'بوليفارد الرياض', distance: '٧ دقائق' },
-      { name: 'مراكز تجارية', distance: '٥ دقائق' },
-      { name: 'مطاعم ومقاهٍ', distance: '٣ دقائق' },
+      { name: 'بوليفارد الرياض', distance: '7 دقائق' },
+      { name: 'مراكز تجارية', distance: '5 دقائق' },
+      { name: 'مطاعم ومقاهٍ', distance: '3 دقائق' },
     ],
     floorPlans: 3,
     brochureSize: 'PDF · 7.6 MB',
@@ -234,7 +234,7 @@ export const PROJECTS = [
   },
   {
     slug: 'ajam-15-hittin',
-    name: 'آجام ١٥',
+    name: 'آجام 15',
     number: '15',
     city: 'الرياض',
     district: 'حي حطين',
@@ -288,9 +288,9 @@ export const PROJECTS = [
     ],
     offer: null,
     nearby: [
-      { name: 'مدارس', distance: '٦ دقائق' },
-      { name: 'حديقة عامة', distance: '٣ دقائق' },
-      { name: 'مركز تجاري', distance: '٩ دقائق' },
+      { name: 'مدارس', distance: '6 دقائق' },
+      { name: 'حديقة عامة', distance: '3 دقائق' },
+      { name: 'مركز تجاري', distance: '9 دقائق' },
     ],
     floorPlans: 3,
     brochureSize: 'PDF · 7.1 MB',
@@ -348,8 +348,8 @@ export const PROJECTS = [
     paymentPlans: [],
     offer: null,
     nearby: [
-      { name: 'مدارس', distance: '٨ دقائق' },
-      { name: 'مركز تجاري', distance: '١٠ دقائق' },
+      { name: 'مدارس', distance: '8 دقائق' },
+      { name: 'مركز تجاري', distance: '10 دقائق' },
     ],
     floorPlans: 2,
     brochureSize: 'PDF · 5.2 MB',
@@ -396,7 +396,7 @@ export const PROJECTS = [
     units: [{ type: 'شقة', area: 110, bedrooms: 2, bathrooms: 2, status: 'sold', priceFrom: 980000 }],
     paymentPlans: [],
     offer: null,
-    nearby: [{ name: 'خدمات', distance: '٥ دقائق' }],
+    nearby: [{ name: 'خدمات', distance: '5 دقائق' }],
     floorPlans: 2,
     brochureSize: 'PDF · 4.8 MB',
     investor: null,
@@ -413,7 +413,7 @@ export function similarProjects(slug, n = 3) {
 
 export function formatSAR(value) {
   if (value == null) return '—'
-  return new Intl.NumberFormat('ar-SA', { maximumFractionDigits: 0 }).format(value)
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value)
 }
 
 // Company-level trust metrics (grounded in real ajamksa.com figures).
@@ -425,15 +425,16 @@ export const COMPANY_STATS = [
 ]
 
 export const CONTACT = {
-  phoneDisplay: '٠٥٣ ٥٠٠ ٤٥٤٠',
+  phoneDisplay: '053 500 4540',
   phoneTel: '+966535004540',
-  whatsappDisplay: '٠٥٣ ٥٠٠ ٤٥٤٠',
+  whatsappDisplay: '053 500 4540',
   whatsappNumber: '966535004540',
   email: 'info@ajamksa.com',
   address: 'الرياض، المملكة العربية السعودية',
-  hours: 'الأحد – الخميس · ٨ ص – ٤ م',
+  hours: 'الأحد – الخميس · 8 ص – 4 م',
   twitter: 'https://twitter.com/ajamksa',
-  instagram: 'https://instagram.com/ajamksa',
+  linkedin: 'https://www.linkedin.com/company/ajamksa',
+  tiktok: 'https://www.tiktok.com/@ajamksa',
 }
 
 export const BRAND = {

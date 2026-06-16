@@ -48,16 +48,17 @@ export function Caption({ as: Comp = 'span', className, children, ...props }) {
   )
 }
 
-// Small uppercase-style eyebrow / section kicker with gold accent.
+// Small eyebrow / section kicker — gold hairline + diamond marker (luxury signature).
 export function Eyebrow({ className, children }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-2 text-label font-medium text-heritage-700',
+        'inline-flex items-center gap-2.5 text-label font-semibold text-heritage-700',
         className,
       )}
     >
-      <span className="h-px w-6 bg-gold-700" aria-hidden />
+      <span className="h-px w-7 bg-gold-700" aria-hidden />
+      <span className="size-1.5 rotate-45 bg-gold-700" aria-hidden />
       {children}
     </span>
   )

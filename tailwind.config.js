@@ -77,8 +77,16 @@ export default {
         'brand-lg': '0.875rem',
       },
       boxShadow: {
-        card: '0 1px 2px rgba(11, 11, 11, 0.04), 0 8px 24px -12px rgba(11, 11, 11, 0.18)',
-        'card-hover': '0 2px 4px rgba(11, 11, 11, 0.06), 0 16px 40px -16px rgba(11, 11, 11, 0.28)',
+        // Brand-tinted (teal-ink) shadows — softer, more premium than neutral black.
+        card: '0 1px 2px rgba(6, 44, 51, 0.05), 0 10px 30px -14px rgba(6, 44, 51, 0.22)',
+        'card-hover': '0 2px 6px rgba(6, 44, 51, 0.08), 0 22px 48px -18px rgba(6, 44, 51, 0.32)',
+        // Warm gold halo — for accent CTAs and luxury hover lifts.
+        'gold-glow': '0 8px 30px -10px rgba(212, 174, 106, 0.5)',
+        'gold-ring': '0 0 0 1px rgba(212, 174, 106, 0.6), 0 14px 36px -16px rgba(6, 44, 51, 0.3)',
+      },
+      backgroundImage: {
+        // Centered gold hairline — the brand's luxury divider thread.
+        'gold-line': 'linear-gradient(90deg, transparent, #D4AE6A, transparent)',
       },
       maxWidth: {
         container: '1200px',

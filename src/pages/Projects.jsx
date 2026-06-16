@@ -68,7 +68,7 @@ export function Projects() {
 
       <Container className="py-12">
         {/* Filter bar */}
-        <div className="rounded-brand-lg border border-stone-200 bg-white p-5 shadow-card sm:p-6">
+        <div className="rounded-brand-lg border border-stone-200 border-t-2 border-t-gold-700 bg-white p-5 shadow-card sm:p-6">
           <div className="flex items-center gap-2 text-teal-900">
             <Icon name="filter" size={20} className="text-heritage-700" />
             <Label className="text-teal-900">تصفية المشاريع</Label>

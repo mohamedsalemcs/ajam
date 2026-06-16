@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Icon } from '../components/ui'
+import { Button, Icon, AjamMark } from '../components/ui'
 import { Headline, Body, Eyebrow, Caption, Label, Display } from '../components/ui/Typography'
 import { Section, Container } from '../components/ui/Container'
 import { SectionHeading, Stat } from '../components/common/Bits'
@@ -11,11 +11,15 @@ import { PROJECTS, COMPANY_STATS, BRAND, formatSAR } from '../data/projects'
 import { WHY_AJAM, JOURNEY, TESTIMONIALS, AWARDS } from '../data/content'
 import { whatsappHref, telHref } from '../lib/links'
 import { cn } from '../lib/cn'
+import { SOLID_TILES, SOFT_TILES, rotate } from '../lib/accents'
+
+// Readable-on-white number tones — one per stat card (heritage · teal · mint · gold).
+const STAT_TONES = ['text-heritage-700', 'text-teal-700', 'text-mint-700', 'text-gold-900']
 
 const HERO_SLIDES = [
-  { img: '/assets/Images/villa-night.jpg', name: 'آجام ١٣', district: 'حي المروج' },
-  { img: '/assets/Images/tower-up.jpg', name: 'آجام ١٤', district: 'حي الملقا' },
-  { img: '/assets/Images/villa-modern.jpg', name: 'آجام ١٢', district: 'حي اليرموك' },
+  { img: '/assets/Images/house-pool.jpg', name: 'آجام 13', district: 'حي المروج' },
+  { img: '/assets/Images/villa-white.jpg', name: 'آجام 14', district: 'حي الملقا' },
+  { img: '/assets/Images/villa-luxury.jpg', name: 'آجام 12', district: 'حي اليرموك' },
 ]
 
 export function Home() {
@@ -43,8 +47,17 @@ export function Home() {
             <img src={s.img} alt="" className={cn('size-full object-cover', i === slide && 'animate-kenburns')} />
           </div>
         ))}
+        {/* legibility base — keeps the headline crisp over any photo */}
         <div className="absolute inset-0 bg-gradient-to-t from-teal-900 via-teal-900/55 to-teal-900/40" />
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent to-teal-900/40" />
+        {/* brand-colour linear layer — heritage → teal → mint → gold across the frame */}
+        <div
+          className="absolute inset-0"
+          aria-hidden
+          style={{
+            background:
+              'linear-gradient(120deg, rgba(139,47,14,0.52) 0%, rgba(6,44,51,0.12) 44%, rgba(14,110,99,0.14) 66%, rgba(212,174,106,0.36) 100%)',
+          }}
+        />
 
         <Container className="relative flex h-full flex-col justify-center">
           <div className="max-w-3xl pt-16">
@@ -104,21 +117,23 @@ export function Home() {
                 ))}
               </div>
             </Container>
-            <div className="h-px w-full bg-white/10" />
+            <div className="rule-gold-soft" aria-hidden />
           </div>
         </Container>
       </section>
 
-      {/* ===== STATS bar ===== */}
-      <section className="bg-teal-900 text-white">
+      {/* ===== STATS — each metric in its own card on a clean white surface ===== */}
+      <section className="bg-white py-12 sm:py-16">
         <Container>
-          <div className="grid grid-cols-2 gap-6 py-10 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {COMPANY_STATS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 80} className="text-center">
-                <div className="font-display text-display-2 text-gold-700">
-                  <Counter value={s.value} suffix={s.suffix} />
+              <Reveal key={s.label} delay={i * 80}>
+                <div className="group h-full rounded-brand-lg border border-stone-200 border-t-2 border-t-gold-700 bg-white p-6 text-center shadow-card transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:shadow-card-hover">
+                  <div className={cn('font-display text-display-2', rotate(STAT_TONES, i))}>
+                    <Counter value={s.value} suffix={s.suffix} />
+                  </div>
+                  <div className="mt-1 text-label text-stone-600">{s.label}</div>
                 </div>
-                <div className="mt-1 text-label text-stone-200/80">{s.label}</div>
               </Reveal>
             ))}
           </div>
@@ -132,8 +147,8 @@ export function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {BRAND.pillars.map((p, i) => (
               <Reveal key={p.title} delay={i * 100}>
-                <div className="group h-full rounded-brand-lg border border-stone-200 bg-stone-100/40 p-8 transition-all hover:border-gold-200 hover:bg-white hover:shadow-card">
-                  <span className="grid size-14 place-items-center rounded-brand bg-heritage-700 text-white transition-transform group-hover:scale-110">
+                <div className="group h-full rounded-brand-lg border border-stone-200 bg-white p-8 transition-all duration-300 ease-out hover:-translate-y-2 hover:border-t-2 hover:border-t-gold-700 hover:shadow-card-hover">
+                  <span className={cn('grid size-14 place-items-center rounded-brand transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6', rotate(SOLID_TILES, i))}>
                     <Icon name={p.icon} size={26} />
                   </span>
                   <Headline level={1} as="h3" className="mt-5">
@@ -148,7 +163,7 @@ export function Home() {
       </Section>
 
       {/* ===== Featured projects ===== */}
-      <Section surface="sand">
+      <Section surface="white">
         <Container>
           <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading className="mb-0" eyebrow="مشاريعنا" title="مشاريع مختارة في الرياض" subtitle="نخبة من مشاريعنا المتاحة وتحت الإنشاء." />
@@ -191,9 +206,9 @@ export function Home() {
                   بأسلوب حياتك.
                 </Body>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {WHY_AJAM.slice(0, 4).map((w) => (
+                  {WHY_AJAM.map((w, i) => (
                     <div key={w.title} className="flex items-start gap-3">
-                      <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-brand bg-teal-100 text-teal-700">
+                      <span className={cn('mt-0.5 grid size-9 shrink-0 place-items-center rounded-brand', rotate(SOFT_TILES, i))}>
                         <Icon name={w.icon} size={18} />
                       </span>
                       <div>
@@ -214,8 +229,10 @@ export function Home() {
       </section>
 
       {/* ===== Live opportunities (urgency) ===== */}
-      <section className="relative overflow-hidden bg-teal-900 py-20 text-white">
-        <img src="/assets/Images/riyadh-skyline-night.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-20" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-mint-500 via-mint-700 to-mint-900 py-20 text-white">
+        {/* خلفية تدرّج لينير بالأخضر (Mint) من الهوية + باترن أجام خفيف */}
+        <AjamMark className="pointer-events-none absolute -bottom-16 -left-12 h-80 w-auto text-white/[0.07]" />
+        <div className="rule-gold absolute inset-x-0 top-0" aria-hidden />
         <Container className="relative">
           <SectionHeading tone="light" eyebrow="فرص متاحة الآن" title="وحدات جاهزة لاقتناص الفرصة" subtitle="مشاريع متاحة للبيع والتسليم الفوري — سجّل اهتمامك قبل نفاد الوحدات." />
           <div className="grid gap-4">
@@ -223,8 +240,10 @@ export function Home() {
               const soldPct = Math.round((p.unitsSold / p.unitsCount) * 100)
               return (
                 <Reveal key={p.slug} delay={i * 70}>
-                  <div className="flex flex-col gap-5 rounded-brand-lg border border-white/10 bg-white/5 p-5 backdrop-blur sm:flex-row sm:items-center">
-                    <img src={p.hero} alt={p.name} className="h-28 w-full rounded-brand object-cover sm:w-44" />
+                  <div className="group flex flex-col gap-5 rounded-brand-lg border border-white/10 bg-white/5 p-5 backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gold-700/50 hover:bg-white/[0.09] hover:shadow-card-hover sm:flex-row sm:items-center">
+                    <div className="h-28 w-full shrink-0 overflow-hidden rounded-brand sm:w-44">
+                      <img src={p.hero} alt={p.name} className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-110" />
+                    </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <Link to={`/projects/${p.slug}`} className="font-display text-headline-1 text-white hover:text-gold-700">
@@ -265,9 +284,9 @@ export function Home() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {JOURNEY.map((j, i) => (
               <Reveal key={j.step} delay={i * 90}>
-                <div className="relative h-full rounded-brand-lg border border-stone-200 bg-stone-100/40 p-6">
-                  <span className="absolute left-5 top-5 font-display text-display-2 text-stone-200">{j.step}</span>
-                  <span className="grid size-12 place-items-center rounded-brand bg-heritage-700 text-white">
+                <div className="group relative h-full rounded-brand-lg border border-stone-200 bg-white p-6 transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+                  <span className="absolute left-5 top-5 font-display text-display-2 text-stone-200 transition-colors group-hover:text-gold-200">{j.step}</span>
+                  <span className={cn('grid size-12 place-items-center rounded-brand transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6', rotate(SOLID_TILES, i))}>
                     <Icon name={j.icon} size={22} />
                   </span>
                   <Headline level={2} as="h3" className="mt-4">{j.title}</Headline>
@@ -279,37 +298,40 @@ export function Home() {
         </Container>
       </Section>
 
-      {/* ===== Investor band ===== */}
-      <section className="bg-white pb-20">
-        <Container>
-          <div className="relative overflow-hidden rounded-brand-lg bg-teal-900 text-white">
-            <img src="/assets/Images/aerial-city.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-25" />
-            <div className="relative grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-2">
-              <div>
-                <Eyebrow className="text-gold-700">بوابة المستثمر</Eyebrow>
-                <Headline className="mt-3 text-white">استثمر بثقة واحصل على عائد مدروس</Headline>
-                <Body className="mt-4 text-stone-200/90">
-                  مشاريع بعوائد إيجارية تنافسية، مع حاسبة عائد تفاعلية ومستشار استثمار يرافقك خطوة بخطوة.
-                </Body>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Button as={Link} to="/investor" variant="gold" size="lg">
-                    احسب عائدك المتوقع
-                    <Icon name="calculator" size={18} />
-                  </Button>
-                  <Button as="a" href={whatsappHref('أرغب بالتحدث إلى مستشار استثمار')} target="_blank" rel="noreferrer" variant="outlineLight" size="lg">
-                    تحدث إلى مستشار
-                  </Button>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                {[{ v: '٧.٤٪', l: 'عائد متوقع' }, { v: '١٠٪', l: 'دفعة أولى' }, { v: 'مرن', l: 'سداد' }].map((x) => (
-                  <div key={x.l} className="rounded-brand border border-white/10 bg-white/5 p-4 text-center backdrop-blur">
-                    <div className="font-display text-headline-1 text-gold-700">{x.v}</div>
-                    <div className="mt-1 text-caption text-stone-200/80">{x.l}</div>
-                  </div>
-                ))}
-              </div>
+      {/* ===== Investor — full-width premium band ===== */}
+      <section className="surface-luxe-dark relative overflow-hidden text-white">
+        {/* lightened property visual — details remain visible */}
+        <img src="/assets/Images/aerial-city.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-45" />
+        {/* directional legibility: dark behind the copy (right), lighter over the visual (left) */}
+        <div className="absolute inset-0 bg-gradient-to-l from-teal-900 via-teal-900/85 to-teal-900/45" />
+        <div className="rule-gold absolute inset-x-0 top-0" aria-hidden />
+        <Container className="relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2">
+          <div>
+            <Eyebrow className="text-heritage-200">بوابة المستثمر</Eyebrow>
+            <Headline className="mt-4 text-white">استثمر بثقة واحصل على عائد مدروس</Headline>
+            <Body className="mt-4 max-w-xl text-stone-200/90">
+              مشاريع بعوائد إيجارية تنافسية، مع حاسبة عائد تفاعلية ومستشار استثمار يرافقك خطوة بخطوة.
+            </Body>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button as={Link} to="/investor" variant="gold" size="lg">
+                احسب عائدك المتوقع
+                <Icon name="calculator" size={18} />
+              </Button>
+              <Button as="a" href={whatsappHref('أرغب بالتحدث إلى مستشار استثمار')} target="_blank" rel="noreferrer" variant="outlineLight" size="lg">
+                تحدث إلى مستشار
+              </Button>
             </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            {[{ v: '7.4٪', l: 'عائد متوقع', c: 'text-mint-200' }, { v: '10٪', l: 'دفعة أولى', c: 'text-gold-700' }, { v: 'مرن', l: 'سداد', c: 'text-gold-700' }].map((x) => (
+              <div
+                key={x.l}
+                className="rounded-brand-lg border border-gold-700/30 bg-white/10 p-4 text-center shadow-card backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-700/60 hover:bg-white/[0.14] sm:p-5"
+              >
+                <div className={cn('font-display text-headline-1 sm:text-display-2', x.c)}>{x.v}</div>
+                <div className="mt-1.5 text-caption text-stone-100/85">{x.l}</div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
@@ -321,8 +343,8 @@ export function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 100}>
-                <figure className="flex h-full flex-col rounded-brand-lg bg-white p-7 shadow-card">
-                  <Icon name="quote" size={32} className="text-gold-700" />
+                <figure className="group flex h-full flex-col rounded-brand-lg border border-stone-200 border-t-2 border-t-gold-700 bg-white p-7 shadow-card transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-card-hover">
+                  <Icon name="quote" size={32} className="text-gold-700 transition-transform duration-300 group-hover:scale-110" />
                   <blockquote className="mt-4 flex-1 text-body-1 leading-loose text-ink-700">{t.text}</blockquote>
                   <figcaption className="mt-5 border-t border-stone-200 pt-4">
                     <div className="font-display text-headline-2 text-teal-900">{t.name}</div>
@@ -348,23 +370,29 @@ export function Home() {
         </Container>
       </section>
 
-      {/* ===== Final CTA ===== */}
-      <section className="relative overflow-hidden bg-heritage-700 py-16 text-white">
-        <Container className="relative flex flex-col items-center gap-6 text-center">
-          <Headline className="text-white">جاهز لخطوتك العقارية القادمة؟</Headline>
-          <Body className="max-w-xl text-white/85">
-            تواصل مع فريق المبيعات الآن، أو تصفّح المشاريع واختر وحدتك المثالية.
-          </Body>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button as="a" href={whatsappHref('مرحباً، أرغب بالتواصل مع المبيعات')} target="_blank" rel="noreferrer" variant="white" size="lg">
-              <Icon name="whatsapp" size={18} /> واتساب
-            </Button>
-            <Button as="a" href={telHref()} variant="outlineLight" size="lg">
-              <Icon name="phone" size={18} /> اتصل بنا
-            </Button>
-            <Button as={Link} to="/projects" variant="outlineLight" size="lg">
-              تصفّح المشاريع
-            </Button>
+      {/* ===== Final CTA — centered card, not full-bleed ===== */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <div className="surface-luxe-mint relative mx-auto max-w-4xl overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 px-6 py-14 text-center text-white shadow-card-hover sm:px-10">
+            {/* Ajam arch motif — faint brand watermark anchoring the CTA */}
+            <AjamMark className="pointer-events-none absolute -bottom-12 -left-8 h-60 w-auto text-white/[0.06]" />
+            <div className="relative flex flex-col items-center gap-6">
+              <Headline className="text-white">ابدأ رحلتك العقارية مع آجام</Headline>
+              <Body className="max-w-xl text-white/85">
+                تواصل مع فريق المبيعات الآن، أو تصفّح المشاريع واختر وحدتك المثالية.
+              </Body>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button as="a" href={whatsappHref('مرحباً، أرغب بالتواصل مع المبيعات')} target="_blank" rel="noreferrer" variant="white" size="lg">
+                  <Icon name="whatsapp" size={18} /> واتساب
+                </Button>
+                <Button as="a" href={telHref()} variant="outlineLight" size="lg">
+                  <Icon name="phone" size={18} /> اتصل بنا
+                </Button>
+                <Button as={Link} to="/projects" variant="outlineLight" size="lg">
+                  تصفّح المشاريع
+                </Button>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

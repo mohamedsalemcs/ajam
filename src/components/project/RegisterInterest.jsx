@@ -13,7 +13,7 @@ export function RegisterInterest({ project }) {
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
   return (
-    <div id="register" className="scroll-mt-24 overflow-hidden rounded-brand-lg bg-teal-900 text-white">
+    <div id="register" className="surface-luxe-dark scroll-mt-24 overflow-hidden rounded-brand-lg border-t-2 border-t-gold-700 text-white">
       <div className="grid lg:grid-cols-5">
         {/* Image side */}
         <div className="relative hidden lg:col-span-2 lg:block">
