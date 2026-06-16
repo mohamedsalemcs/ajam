@@ -28,7 +28,7 @@ export function Footer() {
 
       <div className="relative ajam-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Logo variant="secondary" size="md" />
+          <Logo variant="secondary" size="md" tint="#F4EFE8" />
           <p className="mt-4 text-body-2 leading-relaxed text-stone-200/80">
             مطوّر عقاري سعودي متخصص في التطوير السكني، نخلق مساحات مميزة ذات قيمة مستدامة في الرياض.
           </p>
@@ -88,7 +88,7 @@ export function Footer() {
             </li>
             <li>
               <a href={mailHref()} className="flex items-center gap-2 transition-colors hover:text-gold-700">
-                <Icon name="mail" size={18} className="text-mint-200" /> {CONTACT.email}
+                <Icon name="mail" size={18} className="text-gold-700" /> {CONTACT.email}
               </a>
             </li>
             <li className="flex items-start gap-2">
