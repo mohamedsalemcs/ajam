@@ -142,11 +142,9 @@ export function Home() {
 
       {/* ===== Pillars (الجودة/الابتكار/الاستدامة) ===== */}
       <Section surface="white" className="relative overflow-hidden pt-6 sm:pt-8">
-        {/* Ajam arch motifs — distributed across the empty space, varied harmonious sizes */}
-        <AjamMark className="pointer-events-none absolute left-3 top-3 h-40 w-auto text-teal-900/[0.05]" />
+        {/* Ajam arch motifs — gold + heritage accents in the empty space */}
         <AjamMark className="pointer-events-none absolute right-[18%] top-1 h-36 w-auto text-gold-700/[0.06]" />
         <AjamMark className="pointer-events-none absolute bottom-16 left-[8%] h-56 w-auto text-heritage-700/[0.04]" />
-        <AjamMark className="pointer-events-none absolute bottom-8 right-[9%] h-32 w-auto text-teal-900/[0.05]" />
         <Container className="relative">
           <SectionHeading eyebrow="ما يميّزنا" title="ثلاث ركائز نبني عليها" align="center" />
           <div className="grid gap-6 md:grid-cols-3">
